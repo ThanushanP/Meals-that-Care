@@ -79,8 +79,28 @@ function initMap() {
 
       
 
-      row.innerHTML = '<td class="bankName">Food Bank Name</td><td class="desription"><p id="test">peeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeDescription</p></td><td><a class= "hyper" id="'+i+'" href="second.html">Learn More</a></td>';
+       row.innerHTML = '<td class="bankName">Food Bank Name</td><td class="desription"><p id="test">peeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeDescription</p></td><td><a class= "hyper" id="'+i+'" href="second.html" onclick=" return MoreId(this.id)">Learn More</a></td>';
     }
      
   }
 
+
+  let LearnMore_Id = 0 ;
+
+  function MoreId(num){
+    LearnMore_Id=num;
+  }
+  
+  function loadSec(){
+
+    const itemDiv = document.getElementById("items");
+    const contactDiv = document.getElementById("contact");
+
+    let p = document.createElement("p");
+    p.innerHTML="List of Items of needed";
+    itemDiv.appendChild(p);
+
+    let Con = document.createElement("p");
+    Con.innerHTML="Phones number and Address";
+    contactDiv.appendChild(Con);
+  }
