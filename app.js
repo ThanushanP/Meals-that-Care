@@ -1,5 +1,11 @@
 const SearchButton = document.getElementById('searchButton');
 
+window.addEventListener('keyup', function(event){
+  if (event.keyCode == 13){
+    run();
+  }
+});
+
 SearchButton.addEventListener('click', function(){
     console.log("hi");
 });
