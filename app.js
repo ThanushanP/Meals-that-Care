@@ -11,7 +11,39 @@ function run(){
     }
 
     else{
-        alert("Loading data for "+search);
+      let path = window.location.pathname;
+      let page = path.split("/").pop();
+
+      //Problem here
+      if (page !== "index.html"){
+        window.location.href='index.html';
+      }
+
+      const table = document.getElementById("Table");
+      let r = table.rows;
+      let count = r.length;
+      if (count<5){
+        location.reload();
+      }
+      for (let i=0; i<count; i++){
+        let c = r[i].cells;
+        let result = c[0].innerHTML.localeCompare(search);
+        if (result >= 0 ){
+          
+        }
+        else {
+          table.deleteRow(i);
+          i--;
+          r = table.rows;
+          count = r.length;
+        }
+      }
+      if (count==0){
+        let message = table.insertRow(0);
+        table.style.height="200px";  
+        table.style.top="25%";
+        message.innerHTML= '<td style="text-align:center;" >Sorry... No Results..</td>';
+      }
     }
 }
 
