@@ -47,7 +47,7 @@ function initMap() {
 
       
 
-      row.innerHTML = '<td class="bankName">Food Bank Name</td><td class="desription"><p id="test">peeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeDescription</p></td><td><a class= "hyper" id="hyp'+i+'" href="second.html">Learn More</a></td>';
+      row.innerHTML = '<td class="bankName">Food Bank Name</td><td class="desription"><p id="test">peeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeDescription</p></td><td><a class= "hyper" id="'+i+'" href="second.html">Learn More</a></td>';
     }
      
   }
