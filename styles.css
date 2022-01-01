@@ -152,7 +152,7 @@ header{
       color: white;
       font-weight: medium;
       right:30px;
-      top:30px;
+      top:28px;
       font-size: 20px;
   }
   #home:hover{
@@ -171,7 +171,7 @@ header{
 
 img{
     position:absolute;
-    top: -7%;
+    top: -6%;
     left: 2%;
     width: 175px;
     height: 175px;
