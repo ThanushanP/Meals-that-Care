@@ -33,6 +33,10 @@ header{
     height: 25px;
 }
 
+#magnifyingGlass:hover{
+  color:rgb(196, 163, 163);
+}
+
 .hyper:hover{
     color: rgb(196, 163, 163);
 }
