@@ -1,7 +1,7 @@
-let LearnMore_Id = 0;
 let Table = ["Allan Gardens Food Bank", "Avenue Road Food Bank", "Bethany Baptist Church", "Bloor West Food Bank", "Daily Bread Food Bank"];
 let TableOfItems = [["baby food", "canned", "rice", "pasta", "milk", "beans"], ["canned", "instant foods", "fruits", "vegetables"], ["canned"], ["canned", "instant", "pasta sauce", "peanut butter", "cereal", "toothpaste", "razors"], ["canned", "groceries", "bread", "pasta", "dairy"]];
 let learnMoreIDs = [];
+let locations = [[43.662891, -79.372570], [43.676942, -79.397925], [43.689219, -79.348473], [43.650205, -79.479346], [43.606892, -79.505963]];
 
 let contact = [
   ["353 Sherbourne St. Toronto, ON", "allangardensfoodbank@gmail.com", "allangardensfoodbank.com"],
@@ -9,7 +9,6 @@ let contact = [
   ["1041 Pape Ave, East York, ON", "bethanychurch@sympatico.ca ", "www.bethanychurcheastyork.com"],
   ["St. Pius X Catholic Church, 2305 Bloor St W, Toronto, ON", "infofoodbank.lf@gmail.com", "bloorwestfoodbank.ca"],
   ["191 New Toronto St, Toronto, ON", "416-203-0050", "www.dailybread.ca"]];
-
 
 window.onload = function () {
   addRows(5);
@@ -36,13 +35,13 @@ function run() {
   let input = document.getElementById('searchBar').value;
   console.log(input);
   console.log(TableOfItems);
-
   let count = 5;// as u dleete rows, count gets updated
   let table = document.getElementById('Table');
   let cnt = 0;
   for (let i = 0; i < 5; i++) {
     cnt = 0;
     for (let j = 0; j < Object.keys(temp[i]).length; j++) {
+      // let result = TableOfItems[i][j].localeCompare(input);
       if (temp[i][j] != input) {
         cnt++;
       }
@@ -55,9 +54,8 @@ function run() {
       count = temp.length;
     }
   }
-
   if (count == 0) {
-    alert("No Results");
+    alert("Hi");
   }
 }
 
@@ -69,29 +67,26 @@ function deleteRow(arr, row) {
 
 // Initialize and add the map
 function initMap() {
+  // Shelter Loc
+  // change lat and lng for whatever shelter
   let i = sessionStorage.getItem('CurrentLink');
   let x = locations[i][0];
   let y = locations[i][1];
   let location = { lat: x, lng: y };
-  
+  // Centered at location
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 15,
     center: location,
   });
-
   // Loc marker
   const marker = new google.maps.Marker({
     position: location,
     map: map,
   });
-
 }
 
-
-function addRows() {
+function addRows(count) {
   const table = document.getElementById("Table");
-  let count = 5;
-
   let h = 200 * count;
   table.style.height = h + "px";
   for (let i = 0; i < count; i++) {
@@ -109,7 +104,6 @@ function addRows() {
       row.innerHTML = '<td class="bankName">Daily Bread Food Bank</td><td class="desription"><p id="test">Founded in 1983, Daily Bread Food Bank has grown to become one of Canada’s largest food banks. Through its research and advocacy, Daily Bread has become a key thought leader locally, provincially and nationally on issues about hunger, life on low income, housing, and income security. Open Mon to Fri 8am to 4pm</p></td><td><a class= "hyper" id="' + 4 + '" href="second.html" onclick="MoreId(this.id)">Learn More</a></td>';
     learnMoreIDs.push(i);
   }
-
   sessionStorage.setItem('learnMoreIDs', learnMoreIDs);
 }
 
@@ -120,20 +114,16 @@ function MoreId(num) {
 function loadSec() {
   let x = sessionStorage.getItem('CurrentLink'); // Index of table from DataBase
   let temp = "";
-
   for (let i = 0; i < TableOfItems[x].length; i++) {
     temp += "<br>► " + TableOfItems[x][i];
   }
-
   const itemDiv = document.getElementById("items");
   const contactDiv = document.getElementById("contact");
-
   let p = document.createElement("p");
   p.innerHTML = "List of Items of needed: " + temp;
   itemDiv.appendChild(p);
-
   let Con = document.createElement("p");
   // 0-address, 1-email, 2-link
-  Con.innerHTML = "Phones number and Address:<br> " + contact[x][0] + "<br>" + contact[x][1] + "<br>" + "<a>"+contact[x][2];
+  Con.innerHTML = "Phones number and Address:<br> " + contact[x][0] + "<br>" + contact[x][1] + "<br>" + "<a>" + contact[x][2] + "</a>";
   contactDiv.appendChild(Con);
 }
