@@ -5,6 +5,11 @@
     font-family: "Poppins", sans-serif;
 }
 
+p{
+  font-size: 20px;
+  margin-left: 5px;
+}
+
 
 html{min-height: 100%;}
 body{min-height: 100vh;}
