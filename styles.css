@@ -169,10 +169,11 @@ header{
 
 img{
     position:absolute;
-    top: -6%;
-    left: 2%;
-    width: 175px;
-    height: 175px;
-  }  
+    top: -3%;
+    left: 8%;
+    transform: translate(-50%, 0%);
+    width: 15%;
+    height: 15%;
+  }   
 
 
