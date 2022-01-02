@@ -122,7 +122,7 @@ function loadSec() {
   let temp = "";
 
   for (let i = 0; i < TableOfItems[x].length; i++) {
-    temp += "<br>- " + TableOfItems[x][i];
+    temp += "<br>► " + TableOfItems[x][i];
   }
 
   const itemDiv = document.getElementById("items");
