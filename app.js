@@ -1,8 +1,14 @@
 let LearnMore_Id = 0;
-let Table = [];
+let Table = ["Allan Gardens Food Bank", "Avenue Road Food Bank", "Bethany Baptist Church", "Bloor West Food Bank", "Daily Bread Food Bank"];
+let TableOfItems = [
+  ["baby food", "canned", "rice", "pasta", "milk", "beans"],
+  ["canned", "instant foods", "fruits", "vegetables"],
+  ["canned"],
+  ["canned", "instant", "pasta sauce", "peanut butter", "cereal", "toothpaste", "razors"],
+  ["canned", "groceries", "bread", "pasta", "dairy"]];
 
 window.onload = function () {
-  addRows();
+  addRows(5);
 }
 
 window.addEventListener('keyup', function (event) {
@@ -11,50 +17,55 @@ window.addEventListener('keyup', function (event) {
   }
 });
 
+function titleCase(str) {
+  var splitStr = str.toLowerCase().split(' ');
+  for (var i = 0; i < splitStr.length; i++) {
+    splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+  }
+  // Directly return the joined string
+  return splitStr.join(' ');
+}
+
 function run() {
-  let search = document.getElementById("searchBar").value;
-  if (search == null || search == "") {
 
-  }
+  let temp = TableOfItems;
+  let input = document.getElementById('searchBar').value;
+  console.log(input);
+  console.log(TableOfItems);
 
-  else {
-
-    let path = window.location.pathname;
-    let page = path.split("/").pop();
-    //Problem here
-    if (page !== "index.html") {
-      window.location.href = 'index.html';
-    }
-
-    const table = document.getElementById("Table");
-    let r = table.rows;
-    let count = r.length;
-
-    if (count < 5) {
-      // addRows();
-    }
-
-    for (let i = 0; i < count; i++) {
-      let c = r[i].cells;
-      let result = c[0].innerHTML.localeCompare(search);
-      if (result >= 0) {
-
-      }
-      else {
-        table.deleteRow(i);
-        i--;
-        r = table.rows;
-        count = r.length;
+  let count = 5;// as u dleete rows, count gets updated
+  let table = document.getElementById('Table');
+  let cnt = 0;
+  for (let i = 0; i < 5; i++) {
+    cnt = 0;
+    for (let j = 0; j < Object.keys(temp[i]).length; j++) {
+      // let result = TableOfItems[i][j].localeCompare(input);
+      if (temp[i][j] != input) {
+        cnt++;
       }
     }
-
-    if (count == 0) {
-      let message = table.insertRow(0);
-      table.style.height = "200px";
-      table.style.top = "25%";
-      message.innerHTML = '<td style="text-align:center;" >Sorry... No Results..</td>';
+    // Delete row if cnt reaches min
+    console.log("i: " + i);
+    console.log("cnt: " + cnt);
+    console.log("tableofitems: " + temp[i].length);
+    console.log("tableOfItems[i]: " + temp[i]);
+    if (cnt == temp[i].length) {
+      table.deleteRow(i);
+      temp = deleteRow(temp, i);
+      i--;
+      count = temp.length;
     }
   }
+
+  if (count == 0) {
+    alert("No Results");
+  }
+}
+
+function deleteRow(arr, row) {
+  arr = arr.slice(0); // make copy
+  arr.splice(row - 1, 1);
+  return arr;
 }
 
 // Initialize and add the map
