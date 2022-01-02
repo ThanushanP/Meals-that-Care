@@ -69,10 +69,19 @@ function deleteRow(arr, row) {
 
 // Initialize and add the map
 function initMap() {
-  // Shelter Loc
-  // change lat and lng for whatever shelter
-  const location = { lat: 43.606892, lng: -79.505963 };
-  // Centered at location
+  let x = sessionStorage.getItem('CurrentLink');
+  let location;
+  if (x == 0) {
+    location = { lat: 43.662891, lng: -79.372570 };
+  } else if (x == 1) {
+    location = { lat: 43.676942, lng: -79.397925 };
+  } else if (x == 2) {
+    location = { lat: 43.689219, lng: -79.348473 };
+  } else if (x == 3) {
+    location = { lat: 43.650205, lng: -79.479346 };
+  } else {
+    location = { lat: 43.606892, lng: -79.505963 };
+  }
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 15,
     center: location,
