@@ -39,16 +39,11 @@ function run() {
   for (let i = 0; i < 5; i++) {
     cnt = 0;
     for (let j = 0; j < Object.keys(temp[i]).length; j++) {
-      // let result = TableOfItems[i][j].localeCompare(input);
       if (temp[i][j] != input) {
         cnt++;
       }
     }
     // Delete row if cnt reaches min
-    console.log("i: " + i);
-    console.log("cnt: " + cnt);
-    console.log("tableofitems: " + temp[i].length);
-    console.log("tableOfItems[i]: " + temp[i]);
     if (cnt == temp[i].length) {
       table.deleteRow(i);
       temp = deleteRow(temp, i);
